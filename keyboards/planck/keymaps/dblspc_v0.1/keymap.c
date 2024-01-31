@@ -27,9 +27,9 @@ enum planck_layers {
   _SYMBOLS,
   _LYRONE,
   _LYRTWO,
-  _BOOTLD,
-  _GAMES,
-  _LAYER_INDEX
+  // _GAMES,
+  // _LAYER_INDEX,
+  _BOOTLD
 };
 
 enum planck_keycodes {
@@ -38,13 +38,13 @@ enum planck_keycodes {
 };
 
 #define TG_QWER TO(_QWERTYPC)
-#define TG_GAMS TO(_GAMES)
+// #define TG_GAMS TO(_GAMES)
 #define TG_PC TO(_QWERTYPC)
 #define TG_MAC TO(_QWERTYMAC)
 #define LY_ONE MO(_LYRONE)
 #define LY_TWO MO(_LYRTWO)
 #define LY_GAMS MO(_GAMES)
-#define LY_INDX MO(_LAYER_INDEX)
+// #define LY_INDX MO(_LAYER_INDEX)
 #define LY_SYMB MO(_SYMBOLS)
 #define LY_NUMS MO(_NUMBERS)
 
@@ -54,14 +54,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
     KC_GRAVE,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
-    KC_LCTL,   KC_LGUI,  KC_LALT,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  LY_INDX,  LY_ONE,   LY_TWO
+    KC_LCTL,   KC_LGUI,  KC_LALT,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  KC_NO,    LY_ONE,   LY_TWO
 ),
 
 [_QWERTYMAC] = LAYOUT_planck_2x2u(
     KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
     KC_GRAVE,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
-    KC_LCTL,   KC_LALT,  KC_LGUI,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  LY_INDX,  LY_ONE,   LY_TWO
+    KC_LCTL,   KC_LALT,  KC_LGUI,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  KC_NO,    LY_ONE,   LY_TWO
 ),
 
 [_SYMBOLS] = LAYOUT_planck_2x2u(
@@ -78,12 +78,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
 ),
 
-[_LAYER_INDEX] = LAYOUT_planck_2x2u(
-    KC_NO,     TG_QWER,  TG_GAMS,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  LY_INDX,  _______,  _______
-),
+// [_LAYER_INDEX] = LAYOUT_planck_2x2u(
+//     KC_NO,     TG_QWER,  TG_GAMS,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+//     KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+//     _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+//     _______,   _______,  _______,  _______,  _______,            _______,            _______,  LY_INDX,  _______,  _______
+// ),
 
 [_LYRONE] = LAYOUT_planck_2x2u(
     KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_VOLU,
@@ -99,12 +99,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
 ),
 
-[_GAMES] = LAYOUT_planck_2x2u(
-    KC_NO,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,
-    KC_NO,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   KC_A,     KC_S,     KC_D,     KC_F,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_SPC,             _______,            _______,  LY_INDX,  _______,  _______
-),
+// [_GAMES] = LAYOUT_planck_2x2u(
+//     KC_NO,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,
+//     KC_NO,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+//     _______,   KC_A,     KC_S,     KC_D,     KC_F,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+//     KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_SPC,             _______,            _______,  LY_INDX,  _______,  _______
+// ),
 
 [_BOOTLD] = LAYOUT_planck_2x2u(
     QK_BOOT,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    TG_PC,
@@ -125,14 +125,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _SYMBOLS, _NUMBERS, _BOOTLD);
-}
+  state = update_tri_layer_state(state, _SYMBOLS, _NUMBERS, _BOOTLD);
+  switch (get_highest_layer(state)) {
+    case _QWERTYPC:
+        rgblight_setrgb (RGB_WHITE);
+        break;
+    case _QWERTYMAC:
+        rgblight_setrgb (RGB_BLUE);
+        break;
+    case _SYMBOLS:
+        rgblight_setrgb (RGB_ORANGE);
+        break;
+    case _NUMBERS:
+        rgblight_setrgb (RGB_GREEN);
+        break;
+    case _BOOTLD:
+        rgblight_setrgb (RGB_RED);
+        break;
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (RGB_OFF);
+        break;
+    }
+  return state;
+};
 
 // Sets the RGB Underglow to WHITE, once the board has finished all of its initialisation steps
 
 void keyboard_post_init_user(void) {
   rgblight_setrgb (255, 255, 255);
-}
+};
 
 // layer_state_tt layer_state_set_user(layer_state_t state) {
 //     switch (get_highest_layer(state)) {
