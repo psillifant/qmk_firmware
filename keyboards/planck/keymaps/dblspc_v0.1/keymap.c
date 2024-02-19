@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "keymap_uk.h"
 
 // #ifdef AUDIO_ENABLE
 // #    include "muse.h"
@@ -25,17 +26,16 @@ enum planck_layers {
   _QWERTYMAC,
   _NUMBERS,
   _SYMBOLS,
-  _EMOJI,
-  _MEDIA,
-  _MOVE,
+  _ONE,
+  _TWO,
+  _THREE,
   _GAMES,
   _BOOTLD,
   _LAYERNAVIGATION
 };
 
-enum planck_keycodes {
-  QWERTY = SAFE_RANGE,
-  BACKLIT
+enum custom_keycodes {
+  MY_PIPE = SAFE_RANGE
 };
 
 #define TG_QWER TO(_QWERTYPC)
@@ -43,99 +43,107 @@ enum planck_keycodes {
 #define TG_PC TO(_QWERTYPC)
 #define TG_MAC TO(_QWERTYMAC)
 #define ME_PIPE S(KC_NUBS)
-#define LY_MED LT(_MEDIA, ME_PIPE)
-#define LY_MOVE LT(_MOVE, KC_BSLS)
+#define LT_2PIPE LT(_TWO, KC_EQUAL)
+#define SFT_ENT RSFT_T(KC_ENTER)
+// #define LY_MED S(KC_NUBS)
+#define LT_3HASH LT(_THREE, KC_BSLS)
 #define LY_GAMS MO(_GAMES)
 #define LY_SYMB MO(_SYMBOLS)
 #define LY_NUMS MO(_NUMBERS)
-#define LT_EMOJ LT(_EMOJI, KC_MINS)
+#define LT_1DASH LT(_ONE, KC_MINS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTYPC] = LAYOUT_planck_2x2u(
-    KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
-    KC_GRAVE,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
-    KC_LCTL,   KC_LGUI,  KC_LALT,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  LT_EMOJ,  LY_MED,   LY_MOVE
+    KC_TAB,     KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSPC,
+    KC_GRAVE,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT,
+    KC_LSFT,    KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   SFT_ENT,
+    KC_LCTL,    KC_LGUI,   KC_LALT,   LY_SYMB,   KC_SPC,               KC_SPC,               LY_NUMS,   LT_1DASH,  LT_2PIPE,  LT_3HASH
 ),
 
 [_QWERTYMAC] = LAYOUT_planck_2x2u(
-    KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSPC,
-    KC_GRAVE,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,
-    KC_LCTL,   KC_LALT,  KC_LGUI,  LY_SYMB,  KC_SPC,             KC_SPC,             LY_NUMS,  LT_EMOJ,  LY_MED,   LY_MOVE
+    KC_TAB,     KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,      KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_BSPC,
+    KC_GRAVE,   KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOT,
+    KC_LSFT,    KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,      KC_N,      KC_M,      KC_COMM,   KC_DOT,    KC_SLSH,   SFT_ENT,
+    KC_LCTL,    KC_LALT,   KC_LGUI,   LY_SYMB,   KC_SPC,               KC_SPC,               LY_NUMS,   LT_1DASH,  LT_2PIPE,  LT_3HASH
 ),
 
 [_SYMBOLS] = LAYOUT_planck_2x2u(
-    KC_TILD,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_MINS,  KC_EQL,   KC_BSPC,
-    KC_DEL,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_UNDS,  KC_PLUS,  KC_LBRC,  KC_RBRC,  _______,
-    _______,   KC_NUBS,  KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_NO,    KC_NO,    KC_HOME,  KC_NUHS,  KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_LBRC,   KC_RBRC,   _______,
+    KC_F1,      KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,
+    _______,    UK_PIPE,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
 [_NUMBERS] = LAYOUT_planck_2x2u(
-    KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
-    KC_NO,     KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC,  KC_BSLS,
-    _______,   KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_NUHS,  KC_NUBS,  KC_PGUP,  KC_PGDN,  KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+    KC_GRV,     KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______,
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
-// LAYER KEY ONE
-[_EMOJI] = LAYOUT_planck_2x2u(
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+// LAYER: ONE - Nothing yet.
+[_ONE] = LAYOUT_planck_2x2u(
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
-// LAYER KEY TWO
-[_MEDIA] = LAYOUT_planck_2x2u(
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_MPRV,  KC_VOLU,
-    KC_NO,     KC_NO,    KC_MSTP,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_VOLD,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_MNXT,  KC_NO,    KC_MUTE,  KC_NO,    KC_NO,    KC_MUTE,
-    _______,   _______,  _______,  _______,  KC_MPLY,            KC_MPLY,            _______,  _______,  _______,  _______
+// LAYER: TWO - Media Controls
+[_TWO] = LAYOUT_planck_2x2u(
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_MPRV,   KC_VOLU,
+    KC_NO,      KC_NO,     KC_MSTP,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_VOLD,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_MNXT,   KC_NO,     KC_MUTE,   KC_NO,     KC_NO,     KC_MUTE,
+    _______,    _______,   _______,   _______,   KC_MPLY,              KC_MPLY,              _______,   _______,   _______,   _______
 ),
-// LAYER KEY THREE
-[_MOVE] = LAYOUT_planck_2x2u(
-    KC_ESC,    KC_HOME,  KC_UP,    KC_END,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_HOME,  KC_DEL,
-    KC_NO,     KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_END,   KC_NO,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+// LAYER: THREE - Arrows, ESC and other movement
+[_THREE] = LAYOUT_planck_2x2u(
+    KC_ESC,     KC_HOME,   KC_UP,     KC_END,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_HOME,   KC_DEL,
+    KC_NO,      KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_END,    KC_NO,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
+// Layer: Games - Roughly a 1 row offset to allow the numbers to be included by default.  HASH symbol on the right as I've got used 
+// to mapping that to quicksave.
 [_GAMES] = LAYOUT_planck_2x2u(
-    KC_ESC,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_NO,
-    KC_TAB,    KC_Q,     KC_W,     KC_E,     KC_R,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   KC_A,     KC_S,     KC_D,     KC_F,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_LSFT,   KC_Z,     KC_X,     KC_C,     KC_SPC,             _______,            _______,  _______,  _______,  _______
+    KC_ESC,     KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_NO,
+    KC_TAB,     KC_Q,      KC_W,      KC_E,      KC_R,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_BSLS,
+    _______,    KC_A,      KC_S,      KC_D,      KC_F,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_LSFT,    KC_Z,      KC_X,      KC_C,      KC_SPC,               _______,              _______,   _______,   _______,   _______
 ),
 
+// Layer: Bootloader - Provides access to the bootloader and Caps Lock, both keys only to be used as an exception.
+// Invoked by the layer_state_set_user in-built function, and the update_tri_layer_state function called within that.
 [_BOOTLD] = LAYOUT_planck_2x2u(
-    QK_BOOT,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_CAPS,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+    QK_BOOT,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_CAPS,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
+// Layer: Navigation - An override layer navigator to allow access to Games, and switching between Mac and PC layouts.
 [_LAYERNAVIGATION] = LAYOUT_planck_2x2u(
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    TG_PC,
-    KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    TG_MAC,
-    _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    TG_GAMS,
-    _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     TG_PC,
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     TG_MAC,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     TG_GAMS,
+    _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 ),
 
+// Layer: To be used as a template for new layers
 // [_BLANK] = LAYOUT_planck_2x2u(
-    // KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    // KC_NO,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    // _______,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    // _______,   _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______
+    // KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    // KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    // _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    // _______,    _______,   _______,   _______,   _______,              _______,              _______,   _______,   _______,   _______
 // ),
 
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _SYMBOLS, _NUMBERS, _BOOTLD);
-  state = update_tri_layer_state(state, _MEDIA, _MOVE, _LAYERNAVIGATION);
+  state = update_tri_layer_state(state, _TWO, _THREE, _LAYERNAVIGATION);
   switch (get_highest_layer(state)) {
     case _QWERTYPC:
         rgblight_setrgb (RGB_WHITE);
@@ -165,37 +173,11 @@ void keyboard_post_init_user(void) {
   rgblight_setrgb (255, 255, 255);
 };
 
-// layer_state_tt layer_state_set_user(layer_state_t state) {
-//     switch (get_highest_layer(state)) {
-//     case _QWERTY:
-//         rgblight_setrgb (0xFF,  0xFF, 0xFF);
-//         break;
-//     case _BOOTLD:
-//         rgblight_setrgb (0xFF,  0x00, 0x00);
-//         break;
-//     default: //  for any other layers, or the default layer
-//         rgblight_setrgb (0x00,  0xFF, 0xFF);
-//         break;
-//     }
-//   return state;
-// };
-
-
-// const rgblight_segment_t PROGMEM my_test_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {6, 4, HSV_RED},       // Light 4 LEDs, starting with LED 6
-//     {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
-// );
-
-// const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-//     my_test_layer
-// );
-
-// void keyboard_post_init_user(void) {
-//     // Enable the LED layers
-//     rgblight_layers = my_rgb_layers;
-// }
-
-// layer_state_t default_layer_state_set_user(layer_state_t state) {
-//     rgblight_set_layer_state(0, layer_state_cmp(state, _GREY));
-//     return state;
-// }
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case MY_PIPE:
+          SEND_STRING("|"); // Change the character(s) to be sent on tap here
+      return false; // We handled this keypress
+  }
+  return true; // We didn't handle other keypresses
+}
