@@ -6,6 +6,7 @@ enum planck_layers {
   _ONE,
   _TWO,
   _THREE,
+  _FNKEYS,
   _GAMES,
   _SCROLL,
   _ADMIN
@@ -28,6 +29,12 @@ enum custom_keycodes {
 #define LY_NUMS MO(_NUMBERS)
 #define LT_1DASH LT(_ONE, KC_MINS)
 
+// i3 Shortcuts
+#define i3_UP LSG(KC_L)
+#define i3_DOWN LSG(KC_K)
+#define i3_LEFT LSG(KC_J)
+#define i3_RGHT LSG(KC_SCLN)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTYPC] = LAYOUT_planck_1x2uC(
@@ -45,23 +52,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_SYMBOLS] = LAYOUT_planck_1x2uC(
-    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     _______,
     KC_NO,      KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,    KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,   KC_LPRN,   KC_RPRN,   _______,
-    _______,    UK_PIPE,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    UK_PIPE,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     _______,
     _______,    _______,   _______,   _______,   _______,   _______,              _______,   _______,   _______,   _______,   _______
 ),
 
 [_NUMBERS] = LAYOUT_planck_1x2uC(
-    KC_GRV,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,      _______,
-    KC_NO,      KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_NO,
-    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_GRV,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     _______,
+    KC_NO,      KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     _______,
     _______,    _______,   _______,   _______,   _______,   _______,              _______,   _______,   _______,   _______,   _______
 ),
 
 // LAYER: ONE - Nothing yet.
 [_ONE] = LAYOUT_planck_1x2uC(
-    KC_F1,      KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,
-    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_NO,      KC_NO,     i3_UP,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    KC_NO,      i3_LEFT,   i3_DOWN,   i3_RGHT,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     _______,    _______,   _______,   _______,   _______,   _______,              _______,   _______,   _______,   _______,   _______
 ),
@@ -79,6 +86,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,      KC_LEFT,   KC_DOWN,   KC_RGHT,   KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_END,    KC_NO,
     _______,    KC_HOME,   KC_NO,     KC_END,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
     _______,    _______,   _______,   _______,   _______,   _______,              _______,   _______,   _______,   _______,   _______
+),
+
+// Layer: To be used as a template for new layers
+[_FNKEYS] = LAYOUT_planck_1x2uC(
+    KC_F1,      KC_F2,     KC_F3,     KC_F4,     KC_F5,     KC_F6,     KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,
+    KC_NO,      KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,     KC_NO,
+    _______,    _______,   _______,   _______,   _______,   _______,   _______,              _______,   _______,   _______,   _______
 ),
 
 // Layer: Games - Roughly a 1 row offset to allow the numbers to be included by default.  HASH symbol on the right as I've got used 

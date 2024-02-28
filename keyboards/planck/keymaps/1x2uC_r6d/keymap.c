@@ -17,6 +17,10 @@
 #include QMK_KEYBOARD_H
 #include "keymap_uk.h"
 
+// #ifdef AUDIO_ENABLE
+// #    include "muse.h"
+// #endif
+
 // We define our keymap centrally so that multiple planck revisions can consume the basic keymap.
 #include "../planck_1x2uC.c"
 
@@ -25,35 +29,38 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _ONE, _TWO, _FNKEYS);
   switch (get_highest_layer(state)) {
     case _QWERTYPC:
-        rgb_matrix_mode(RGB_MATRIX_CUSTOM_all_keys_white);
+        rgblight_setrgb (RGB_WHITE);
         break;
-    // case _QWERTYMAC:
-    //     rgblight_setrgb (RGB_BLUE);
-    //     break;
-    // case _SYMBOLS:
-    //     rgblight_setrgb (RGB_ORANGE);
-    //     break;
-    // case _NUMBERS:
-    //     rgblight_setrgb (RGB_GREEN);
-    //     break;
-    case _GAMES:
-        rgb_matrix_mode(RGB_MATRIX_CUSTOM_layer_games);
+    case _QWERTYMAC:
+        rgblight_setrgb (RGB_BLUE);
         break;
-    case _THREE:
-        rgb_matrix_mode(RGB_MATRIX_CUSTOM_layer_three);
+    case _SYMBOLS:
+        rgblight_setrgb (RGB_ORANGE);
+        break;
+    case _NUMBERS:
+        rgblight_setrgb (RGB_GREEN);
         break;
     case _ADMIN:
-        rgb_matrix_mode(RGB_MATRIX_CUSTOM_all_keys_red);
+        rgblight_setrgb (RGB_RED);
         break;
     default: //  for any other layers, or the default layer
-        rgb_matrix_mode(RGB_MATRIX_CUSTOM_all_keys_white);
+        rgblight_setrgb (RGB_OFF);
         break;
     }
   return state;
-
 };
+
+// Sets the RGB Underglow to WHITE, once the board has finished all of its initialisation steps
 
 void keyboard_post_init_user(void) {
-  rgb_matrix_mode(RGB_MATRIX_CUSTOM_all_keys_white); 
+  rgblight_setrgb (255, 255, 255);
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case MY_PIPE:
+          SEND_STRING("|"); // Change the character(s) to be sent on tap here
+      return false; // We handled this keypress
+  }
+  return true; // We didn't handle other keypresses
+}
