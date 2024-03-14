@@ -18,7 +18,7 @@
 #include "keymap_uk.h"
 
 // We define our keymap centrally so that multiple planck revisions can consume the basic keymap.
-#include "../planck_1x2uC.c"
+#include "../../peterdefaults/planck_1x2uC.c"
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _TWO, _THREE, _ADMIN);
