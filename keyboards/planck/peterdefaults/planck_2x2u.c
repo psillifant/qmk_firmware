@@ -21,15 +21,20 @@ enum custom_keycodes {
 #define TG_PC TO(_QWERTYPC)
 #define TG_MAC TO(_QWERTYMAC)
 #define TG_SCRL TO(_THREE)
-#define LT_2PIPE LT(_TWO, KC_EQUAL)
-#define SFT_ENT RSFT_T(KC_ENTER)
-#define LT_3HASH LT(_THREE, KC_BSLS)
-#define LY_GAMS MO(_GAMES)
-#define LT_SYMB LT(_SYMBOLS, KC_NUBS)
-#define LY_NUMS MO(_NUMBERS)
+
+// Layer Holds
 #define LT_1DASH LT(_ONE, KC_MINS)
-#define LEFT_SPC LT(_SYMBOLS, KC_SPC)
-#define RGHT_SPC LT(_NUMBERS, KC_SPC)
+#define LT_2PIPE LT(_TWO, KC_EQUAL)
+#define LT_3HASH LT(_THREE, KC_BSLS)
+
+// #define LY_GAMS MO(_GAMES)
+// #define LT_SYMB LT(_SYMBOLS, KC_NUBS)
+// #define LY_NUMS MO(_NUMBERS)
+
+// Redefines for Enter and Space
+#define SFT_ENT RSFT_T(KC_ENTER)
+#define LEFT_SPC LT(_NUMBERS, KC_SPC)
+#define RGHT_SPC LT(_SYMBOLS, KC_SPC)
 
 // i3 Shortcuts
 // #define i3_UP LSG(KC_L)
