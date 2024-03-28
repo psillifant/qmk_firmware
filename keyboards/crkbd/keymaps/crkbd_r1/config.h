@@ -31,8 +31,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define QUICK_TAP_TERM 0
 //#define TAPPING_TERM 100
 
+// --------------------------------------------------
+// Disabling Features to save compiled space
+// Disable lock key support
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+// Disable Oneshots: https://docusaurus.qmk.fm/keycodes/#one-shot-keys
+#define NO_ACTION_ONESHOT
+// Disable music mode. Pairs with MUSIC_ENABLE in rules.mk
+#define NO_MUSIC_MODE
+// Limit ourselves to 8 layers, which we should stay well within.
+// LAYER_STATE_16BIT can extend in future if needed.
+#define LAYER_STATE_8BIT
+// --------------------------------------------------
+
 
 #ifdef RGB_MATRIX_ENABLE
+#   undef RGBLIGHT_EFFECT_BREATHING
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 #   define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
