@@ -45,7 +45,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LAYER_STATE_8BIT
 // --------------------------------------------------
 
-
 #ifdef RGB_MATRIX_ENABLE
 #   undef RGBLIGHT_EFFECT_BREATHING
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses

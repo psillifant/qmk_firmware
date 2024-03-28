@@ -1,6 +1,5 @@
 RGBLIGHT_ENABLE = no
-RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_CUSTOM_USER = yes
+RGB_MATRIX_ENABLE = no
 # RGB_MATRIX_CUSTOM_USER = yes
 
 # --------------------------------------------------
@@ -15,7 +14,7 @@ CONSOLE_ENABLE = no
 # https://docusaurus.qmk.fm/feature_command/
 COMMAND_ENABLE = no
 # Disable Mousekeys, I don't use mouse interface on this keyboard.
-MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = yes
 # Space Cadet is used to provide extra functions for shift, namely parantheses.
 # https://docusaurus.qmk.fm/feature_space_cadet
 SPACE_CADET_ENABLE = no
