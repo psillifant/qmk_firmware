@@ -56,6 +56,15 @@ static void oled_render_layer_state(void) {
         case 3:
             oled_write_ln_P(PSTR(" MEDIA "), false);
             break;
+        case 4:
+            oled_write_ln_P(PSTR(" MOUSE "), false);
+            break;
+        case 5:
+            oled_write_ln_P(PSTR(" HELLD "), false);
+            break;
+        case 6:
+            oled_write_ln_P(PSTR("  FNS  "), false);
+            break;
         default:
             oled_write_ln_P(PSTR(" UNDEF "), false);
             break;
