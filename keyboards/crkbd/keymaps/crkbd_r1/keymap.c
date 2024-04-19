@@ -20,6 +20,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LEFT_SPC LT(1, KC_SPC)
 #define RGHT_SPC LT(1, KC_SPC)
+#define Q_TAB LALT_T(KC_Q)
+#define F_GUI LGUI_T(KC_F)
+#define D_ALT LALT_T(KC_D)
+#define S_CTL LCTL_T(KC_S)
+#define L_GUI LGUI_T(KC_L)
+#define K_ALT LALT_T(KC_K)
+#define J_CTL LCTL_T(KC_J)
 #define MINSGUI  LGUI_T(KC_MINS)
 // #define MINSMED  LT(3, KC_MINS)
 #define QUOTMED  LT(3, KC_QUOT)
@@ -34,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Normal base layer
     [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+       KC_TAB,   Q_TAB,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       GRVMSE,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, QUOTMED,
+       GRVMSE,    KC_A,    S_CTL,   D_ALT,   F_GUI,    KC_G,                         KC_H,    J_CTL,   K_ALT,   L_GUI, KC_SCLN, QUOTMED,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  MV_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
